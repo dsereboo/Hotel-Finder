@@ -4,9 +4,8 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import HotelCard from "./components/HotelCard";
-import tropical from "../assets/tropical.jpg"
-import resort1 from "../assets/resort1.jpg"
-import ghana from "../assets/ghana.jpg"
+import RecommendedCard from "./components/RecommendedCard";
+
 
 export default function HomeScreen (){
 
@@ -15,6 +14,11 @@ export default function HomeScreen (){
         // {name:"Marriot", location:"JM, Jamaica", image:"", },
         {name:"Western Cape", location:"FR, France", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/tropical.jpg?alt=media&token=aa19383a-9d20-49fd-8b48-9daef23d740c", },
         {name:"Royal Senchi", location:"GH, Ghana", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/ghana.jpg?alt=media&token=f3ba8451-c9ce-403e-af41-89bb509bde80", },
+    ]
+
+    const sites=[
+        {name:"Silverbird", location:"Accra", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/cinema.jpg?alt=media&token=273e3264-2d33-48a1-9538-6cff3f4723de"},
+        {name:"Wli Watefalls", location:"Ghana", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/photo-1531698451051-18c97580aeb2.jpg?alt=media&token=a0a2d599-3b6a-43c8-871b-226367f99735"}
     ]
 
     return (
@@ -53,14 +57,15 @@ export default function HomeScreen (){
                     horizontal
                     showsHorizontalScrollIndicator={false}
                 />
-        </View>
+            </View>
         </View>
 
         <View style={styles.recommendedContainer}>
-            <View  style={styles.header}>
-                <Text>Recommended</Text>
-                <Text>See All</Text>
+            <View style={styles.header}>
+                <Text style={styles.headerTitle}>Recommended</Text>
+                <Text style={styles.headerText}>See All</Text>
             </View>
+            <RecommendedCard/>
         </View>
 
       </View>
@@ -74,7 +79,7 @@ const styles= StyleSheet.create({
     },
     greetingCard:{
         backgroundColor:"#1560bd",
-        flex:3,
+        flex:3.4,
         borderBottomLeftRadius:20,
         borderBottomRightRadius:20,
     },
@@ -117,7 +122,8 @@ const styles= StyleSheet.create({
         marginHorizontal:20,
     },
     nearbyContainer:{
-        flex:2.5
+        flex:3,
+        justifyContent:"center",
     },
     recommendedContainer:{
         flex:4,
@@ -126,11 +132,14 @@ const styles= StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         marginHorizontal:20,
+        alignItems:"center"
     },
     headerTitle:{
-
+        fontWeight:"bold",
+        fontSize:22
     },
     headerText:{
-
+        fontSize:14,
+        fontWeight:"bold"
     },
 })
