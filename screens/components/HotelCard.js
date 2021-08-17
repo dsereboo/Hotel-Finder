@@ -2,16 +2,16 @@ import React from "react"
 import { Image, StyleSheet, View,Text } from "react-native"
 import { Ionicons } from '@expo/vector-icons';
 
-export default function HotelCard(){
+export default function HotelCard(props){
     return(
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={require("../../assets/resort1.jpg")}/>
+                <Image style={styles.image} source={{uri:props.image}}/>
             </View>
-            <Text style={styles.name}>Hyatt</Text>
+            <Text style={styles.name}>{props.name}</Text>
             <View style={styles.locationContainer}>
                 <Ionicons name="location-sharp" size={16} color="black" />
-                <Text style={styles.location}>BZ, Belize</Text>
+                <Text style={styles.location}>{props.location}</Text>
             </View>
         </View>
     )
@@ -19,7 +19,7 @@ export default function HotelCard(){
 
 const styles= StyleSheet.create({
     container:{
-        flex:0.5,
+        // flex:0.5,
         marginHorizontal:20, 
     },
     image:{

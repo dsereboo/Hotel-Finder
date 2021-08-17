@@ -1,11 +1,22 @@
 import React from "react"
-import { StyleSheet,Text,View,Image, TextInput } from "react-native"
+import { StyleSheet,Text,View,Image, TextInput, FlatList } from "react-native"
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import HotelCard from "./components/HotelCard";
+import tropical from "../assets/tropical.jpg"
+import resort1 from "../assets/resort1.jpg"
+import ghana from "../assets/ghana.jpg"
 
 export default function HomeScreen (){
+
+    const hotels=[
+        {name:"Hyatt", location:"BZ, Belize", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/resort1.jpg?alt=media&token=b4b6a178-16f6-40d7-83f5-591b07b28f8f", },
+        // {name:"Marriot", location:"JM, Jamaica", image:"", },
+        {name:"Western Cape", location:"FR, France", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/tropical.jpg?alt=media&token=aa19383a-9d20-49fd-8b48-9daef23d740c", },
+        {name:"Royal Senchi", location:"GH, Ghana", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/ghana.jpg?alt=media&token=f3ba8451-c9ce-403e-af41-89bb509bde80", },
+    ]
+
     return (
       <View style={styles.container}>
         <View style={styles.greetingCard}>
@@ -31,9 +42,18 @@ export default function HomeScreen (){
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Near you</Text>
                 <Text style={styles.headerText}>See All</Text>
-            </View>
-            <HotelCard/>
-            
+            </View> 
+            <View >
+                <FlatList
+                    data={hotels}
+                    renderItem={({item})=>{
+                        return<HotelCard name={item.name} location={item.location} image={item.image}/>
+                    }}
+                    keyExtractor={(item)=>{item.name}}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                />
+        </View>
         </View>
 
         <View style={styles.recommendedContainer}>
