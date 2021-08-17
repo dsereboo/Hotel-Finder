@@ -7,19 +7,20 @@ import HotelCard from "./components/HotelCard";
 import RecommendedCard from "./components/RecommendedCard";
 
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
 
     const hotels = [
-        { name: "Hyatt", location: "BZ, Belize", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/resort1.jpg?alt=media&token=b4b6a178-16f6-40d7-83f5-591b07b28f8f", },
+        {id:"hj9ds", name: "Hyatt", location: "BZ, Belize", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/resort1.jpg?alt=media&token=b4b6a178-16f6-40d7-83f5-591b07b28f8f", },
         // {name:"Marriot", location:"JM, Jamaica", image:"", },
-        { name: "Western Cape", location: "FR, France", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/tropical.jpg?alt=media&token=aa19383a-9d20-49fd-8b48-9daef23d740c", },
-        { name: "Royal Senchi", location: "GH, Ghana", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/ghana.jpg?alt=media&token=f3ba8451-c9ce-403e-af41-89bb509bde80", },
+        {id:"acbi89", name: "Western Cape", location: "FR, France", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/tropical.jpg?alt=media&token=aa19383a-9d20-49fd-8b48-9daef23d740c", },
+        {id:"almocej2", name: "Royal Senchi", location: "GH, Ghana", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/ghana.jpg?alt=media&token=f3ba8451-c9ce-403e-af41-89bb509bde80", },
     ]
 
     const sites = [
-        { name: "Silverbird", location: "Accra", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/cinema.jpg?alt=media&token=273e3264-2d33-48a1-9538-6cff3f4723de" },
-        { name: "Wli Watefalls", location: "Ghana", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/photo-1531698451051-18c97580aeb2.jpg?alt=media&token=a0a2d599-3b6a-43c8-871b-226367f99735" },
-        { name: "Cathedral", location: "Belgium", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/Mullions-Amiens-Cathedral-France.jpg?alt=media&token=8d0b2469-8c02-4400-9183-1d2f57aec33c" }
+        {id:"5fjkj", name: "Silverbird", location: "Accra", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/cinema.jpg?alt=media&token=273e3264-2d33-48a1-9538-6cff3f4723de" },
+        {id:"21jkajsk6", name: "Wli Waterfalls", location:"Ghana", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/photo-1531698451051-18c97580aeb2.jpg?alt=media&token=a0a2d599-3b6a-43c8-871b-226367f99735" },
+        {id:"78hkshk", name: "Cathedral", location: "Belgium", image: "https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/Mullions-Amiens-Cathedral-France.jpg?alt=media&token=8d0b2469-8c02-4400-9183-1d2f57aec33c" },
+        {id:"0aihui", name: "Great Wall", location:"China", image:"https://firebasestorage.googleapis.com/v0/b/codetrainproject-4c734.appspot.com/o/Great-Wall-of-China.jpg?alt=media&token=a484cec8-d232-475d-a0b6-20985f50b1da"},
     ]
 
     return (
@@ -45,7 +46,7 @@ export default function HomeScreen() {
 
             <View style={styles.nearbyContainer}>
                 <View style={styles.header}>
-                    <Text style={styles.headerTitle}>Near you</Text>
+                    <Text style={styles.headerTitle} >Near you</Text>
                     <Text style={styles.headerText}>See All</Text>
                 </View>
                 <View >
@@ -54,7 +55,7 @@ export default function HomeScreen() {
                         renderItem={({ item }) => {
                             return <HotelCard name={item.name} location={item.location} image={item.image} />
                         }}
-                        keyExtractor={(item) => { item.name }}
+                        keyExtractor={(item) => { item.id }}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                        
@@ -71,9 +72,9 @@ export default function HomeScreen() {
                     <FlatList
                         data={sites}
                         renderItem={({ item }) => {
-                            return <RecommendedCard name={item.name} image={item.image} location={item.location} />
+                            return <RecommendedCard navigation={navigation} name={item.name} image={item.image} location={item.location} />
                         }}
-                        keyExtractor={(item) => { item.location }}
+                        keyExtractor={(item) => { item.id }}
                         horizontal={false}
                         numColumns={2}
                         // columnWrapperStyle={{ flexWrap: "wrap" }}
@@ -139,17 +140,18 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     recommendedContainer: {
-        flex: 4,
+        flex: 4.5,
     },
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginHorizontal: 20,
-        alignItems: "center"
+        alignItems: "center",
+        marginVertical:10,
     },
     headerTitle: {
         fontWeight: "bold",
-        fontSize: 22
+        fontSize: 20
     },
     headerText: {
         fontSize: 14,
