@@ -53,7 +53,7 @@ export default function HomeScreen({navigation}) {
                     <FlatList
                         data={hotels}
                         renderItem={({ item }) => {
-                            return <HotelCard name={item.name} location={item.location} image={item.image} />
+                            return <HotelCard id={item.id} name={item.name} location={item.location} image={item.image} />
                         }}
                         keyExtractor={(item) => { item.id }}
                         horizontal
@@ -72,7 +72,7 @@ export default function HomeScreen({navigation}) {
                     <FlatList
                         data={sites}
                         renderItem={({ item }) => {
-                            return <RecommendedCard navigation={navigation} name={item.name} image={item.image} location={item.location} />
+                            return <RecommendedCard name={item.name} image={item.image} location={item.location} />
                         }}
                         keyExtractor={(item) => { item.id }}
                         horizontal={false}

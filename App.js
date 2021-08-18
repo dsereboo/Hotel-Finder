@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -17,7 +16,11 @@ export default function App() {
        <Stack.Screen name="Homepage" component={HomeScreen} options={{
          headerShown: false,
        }}/>
-       <Stack.Screen name="HotelInfo" component={HotelInfoScreen}/>
+       <Stack.Screen name="HotelInfo" component={HotelInfoScreen} options={{
+         headerTransparent:true,
+         headerTintColor:"#fff",
+         title:""
+       }}/>
      </Stack.Navigator>
    </NavigationContainer>
   );

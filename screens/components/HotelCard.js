@@ -3,13 +3,13 @@ import { Image, StyleSheet, View,Text, Pressable } from "react-native"
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
-export default function HotelCard({name, image, location}){
+export default function HotelCard({name, id, image, location}){
 
     const navigation=useNavigation()
     return(
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Pressable  onPress={()=>navigation.navigate("HotelInfo")}  >
+                <Pressable  onPress={()=>navigation.navigate("HotelInfo", {id})}  >
                      <Image style={styles.image} source={{uri:image}}/>
                 </Pressable>
             </View>
